@@ -1,0 +1,24 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - bot_challenge
+  - ask_knowledge
+
+actions:
+  - action_rag_retrieval
+
+responses:
+  utter_greet:
+    - text: "Xin chào, tôi có thể hỗ trợ bạn tra cứu nội dung trong Cẩm nang Chuyển đổi số."
+
+  utter_goodbye:
+    - text: "Tạm biệt, chúc bạn học tốt và ứng dụng hiệu quả chuyển đổi số."
+
+  utter_iamabot:
+    - text: "Tôi là một Chatbot AI được hỗ trợ bởi Rasa và Gemini."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

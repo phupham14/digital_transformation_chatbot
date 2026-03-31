@@ -1,0 +1,11 @@
+version: "3.1"
+
+stories:
+  - story: Kịch bản người dùng chào hỏi, hỏi kiến thức và tạm biệt
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_knowledge
+      - action: action_rag_retrieval
+      - intent: goodbye
+      - action: utter_goodbye

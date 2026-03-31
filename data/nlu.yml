@@ -1,0 +1,427 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - xin chào
+      - chào bạn
+      - hello
+      - hi
+      - chào chatbot
+      - cho tôi hỏi
+
+  - intent: goodbye
+    examples: |
+      - tạm biệt
+      - bye
+      - hẹn gặp lại
+      - cảm ơn, tạm biệt
+
+  - intent: ask_knowledge
+    examples: |
+      - cẩm nang này nói về gì
+      - chuyển đổi số là gì
+      - tài liệu này gồm những phần nào
+      - cẩm nang chuyển đổi số có nội dung gì
+      - sách này chia thành những chương nào
+      - cho tôi xem mục lục của cẩm nang chuyển đổi số
+      - chuyển đổi số là gì
+      - định nghĩa chuyển đổi số
+      - khái niệm chuyển đổi số là gì
+      - digital transformation là gì
+      - thế nào là chuyển đổi số
+      - tin học hóa là gì
+      - số hóa quy trình là gì
+      - digitization là gì
+      - khái niệm tin học hóa
+      - quá trình thay đổi tổng thể và toàn diện là gì
+      - thế nào là thay đổi tổng thể và toàn diện
+      - vì sao chuyển đổi số là thay đổi toàn diện
+      - sự khác nhau giữa chuyển đổi số và tin học hóa là gì
+      - phân biệt chuyển đổi số với tin học hóa
+      - chuyển đổi số khác tin học hóa ở điểm nào
+      - sự khác nhau giữa chuyển đổi số với khoa học công nghệ và đổi mới sáng tạo là gì
+      - phân biệt chuyển đổi số và đổi mới sáng tạo
+      - chuyển đổi số khác khoa học công nghệ như thế nào
+      - công nghệ số là gì
+      - khái niệm công nghệ số
+      - digital technology là gì
+      - cách mạng công nghiệp lần thứ tư là gì
+      - công nghiệp 4.0 là gì
+      - định nghĩa cách mạng công nghiệp 4.0
+      - sự khác biệt căn bản của cuộc cách mạng công nghiệp lần thứ tư là gì
+      - cuộc cách mạng công nghiệp lần thứ tư khác gì
+      - điểm khác biệt của cách mạng công nghiệp 4.0 là gì
+      - trí tuệ nhân tạo là gì
+      - AI là gì
+      - khái niệm ai
+      - artificial intelligence là gì
+      - internet vạn vật là gì
+      - iot là gì
+      - khái niệm internet vạn vật
+      - dữ liệu lớn là gì
+      - big data là gì
+      - khái niệm dữ liệu lớn
+      - điện toán đám mây là gì
+      - cloud computing là gì
+      - khái niệm điện toán đám mây
+      - chuỗi khối là gì
+      - blockchain là gì
+      - khái niệm blockchain
+      - khó khăn và thách thức lớn nhất của chuyển đổi số là gì
+      - trở ngại lớn nhất khi chuyển đổi số là gì
+      - thách thức của chuyển đổi số là gì
+      - chuyển đổi số có gì không tốt
+      - mặt trái của chuyển đổi số là gì
+      - chuyển đổi số có tiêu cực không
+      - tại sao nói chuyển đổi số là thay đổi kích thước bàn ăn
+      - vì sao chuyển đổi số là thay đổi bàn ăn
+      - vì sao lại cần chuyển đổi số
+      - tại sao cần chuyển đổi số
+      - lý do cần chuyển đổi số là gì
+      - vì sao chuyển đổi số quan trọng
+      - chuyển đổi số quốc gia là gì
+      - khái niệm chuyển đổi số quốc gia
+      - national digital transformation là gì
+      - vì sao việt nam cần chuyển đổi số
+      - tại sao việt nam phải chuyển đổi số
+      - lý do việt nam cần chuyển đổi số
+      - việt nam có cơ hội chuyển đổi số không
+      - cơ hội chuyển đổi số của việt nam là gì
+      - việt nam có lợi thế gì trong chuyển đổi số
+      - vì sao chuyển đổi số là cơ hội lớn
+      - tại sao chuyển đổi số là cơ hội lớn
+      - chuyển đổi số mở ra cơ hội gì
+      - vì sao doanh nghiệp cần chuyển đổi số
+      - tại sao doanh nghiệp phải chuyển đổi số
+      - doanh nghiệp có cần chuyển đổi số không
+      - vì sao cá nhân cần chuyển đổi số
+      - tại sao mỗi người cần chuyển đổi số
+      - người dân có cần chuyển đổi số không
+      - tại sao nói chuyển đổi số hay là chết
+      - vì sao phải chuyển đổi số nếu không sẽ bị đào thải
+      - chuyển đổi số hay là chết nghĩa là gì
+      - chuyển đổi số là việc của ai
+      - ai tham gia chuyển đổi số
+      - chuyển đổi số thuộc trách nhiệm của ai
+      - nhà lãnh đạo chuyển đổi số là ai
+      - lãnh đạo chuyển đổi số cần làm gì
+      - vai trò của người lãnh đạo trong chuyển đổi số
+      - chuyên gia công nghệ số là ai
+      - chuyên gia chuyển đổi số là ai
+      - vai trò của chuyên gia công nghệ số
+      - người tham gia chuyển đổi số là ai
+      - những ai tham gia chuyển đổi số
+      - ai là người tham gia vào chuyển đổi số
+      - chuyển đổi số có phải là chuyện riêng của doanh nghiệp công nghệ số không
+      - chỉ doanh nghiệp công nghệ mới cần chuyển đổi số đúng không
+      - chuyển đổi số có chỉ dành cho công ty công nghệ không
+      - có những loại hình doanh nghiệp công nghệ số nào
+      - các loại doanh nghiệp công nghệ số là gì
+      - doanh nghiệp công nghệ số gồm những loại nào
+      - tại sao nói chuyển đổi số là cuộc cách mạng toàn dân
+      - vì sao chuyển đổi số là cuộc cách mạng của mọi người
+      - chuyển đổi số có phải cuộc cách mạng toàn dân không
+      - chuyển đổi số khi nào
+      - khi nào nên chuyển đổi số
+      - lúc nào bắt đầu chuyển đổi số
+      - chuyển đổi số trước khi khủng hoảng
+      - có nên chuyển đổi số trước khi khủng hoảng không
+      - khi chưa khủng hoảng có nên chuyển đổi số không
+      - hay khủng hoảng rồi mới chuyển đổi
+      - nên chờ khủng hoảng rồi mới chuyển đổi số đúng không
+      - sau khủng hoảng mới chuyển đổi số có được không
+      - cách tốt nhất để dự đoán tương lai là gì
+      - làm sao để dự đoán tương lai trong chuyển đổi số
+      - dự đoán tương lai bằng cách nào
+      - chuyển đổi số những gì
+      - cần chuyển đổi những gì
+      - đối tượng nào cần chuyển đổi số
+      - trước tiên tiến hành các thử nghiệm quy mô nhỏ có được không
+      - có nên thử chuyển đổi số quy mô nhỏ trước không
+      - bắt đầu chuyển đổi số bằng thử nghiệm nhỏ được không
+      - trước tiên ứng dụng công nghệ số để giảm chi phí có được không
+      - có nên bắt đầu chuyển đổi số từ giảm chi phí không
+      - dùng công nghệ số để tiết kiệm chi phí trước được không
+      - làm nhanh làm nhiều là tốt
+      - làm nhanh nhiều có tốt không
+      - chuyển đổi số càng nhanh càng tốt đúng không
+      - chuyển đổi số như thế nào
+      - làm chuyển đổi số như thế nào
+      - cách thực hiện chuyển đổi số
+      - triển khai chuyển đổi số ra sao
+      - có một lộ trình chung để tham khảo hay không
+      - có roadmap chuyển đổi số chung không
+      - lộ trình chuyển đổi số tham khảo là gì
+      - xây dựng chiến lược chuyển đổi số như thế nào
+      - cách xây dựng chiến lược chuyển đổi số
+      - lập chiến lược chuyển đổi số ra sao
+      - thuê tư vấn chuyển đổi số như thế nào
+      - có nên thuê tư vấn chuyển đổi số không
+      - chọn đơn vị tư vấn chuyển đổi số ra sao
+      - nền tảng số là gì
+      - khái niệm nền tảng số
+      - digital platform là gì
+      - sử dụng nền tảng để chuyển đổi số như thế nào
+      - dùng nền tảng số để chuyển đổi số ra sao
+      - vai trò của nền tảng số trong chuyển đổi số là gì
+      - hiểu về make in vietnam như thế nào
+      - make in vietnam là gì
+      - chuyển đổi số gắn với make in vietnam ra sao
+      - hình thành văn hóa trong kỷ nguyên số như thế nào
+      - văn hóa số là gì
+      - xây dựng văn hóa số như thế nào
+      - làm thế nào để địa phương khởi động chuyển đổi số một cách dễ dàng
+      - địa phương bắt đầu chuyển đổi số như thế nào
+      - cách khởi động chuyển đổi số cho địa phương
+      - chuyển đổi số tốn bao nhiêu tiền
+      - chi phí chuyển đổi số là bao nhiêu
+      - làm chuyển đổi số có tốn kém không
+      - chuyển đổi số giúp tạo ra thêm bao nhiêu doanh thu
+      - chuyển đổi số tăng doanh thu như thế nào
+      - doanh thu tăng nhờ chuyển đổi số ra sao
+      - chi cho chuyển đổi số thế nào cho phù hợp
+      - nên đầu tư bao nhiêu cho chuyển đổi số
+      - phân bổ ngân sách chuyển đổi số ra sao
+      - có cách nào để biết chi cho chuyển đổi số có hiệu quả hay không
+      - làm sao đo hiệu quả chuyển đổi số
+      - đánh giá hiệu quả đầu tư chuyển đổi số như thế nào
+      - chuyển đổi số trong xã hội là gì
+      - xã hội số là gì
+      - chuyển đổi số lấy người dân làm trung tâm là gì
+      - công dân số là ai
+      - khái niệm công dân số là gì
+      - thế nào là công dân số
+      - văn hóa số là gì
+      - văn hóa số của người dân là gì
+      - sống trong xã hội số cần văn hóa gì
+      - danh tính số là gì
+      - digital identity là gì
+      - nhận dạng số là gì
+      - hạ tầng số là gì
+      - digital infrastructure là gì
+      - khái niệm hạ tầng số
+      - chuyển đổi số đem lại lợi ích gì cho người dân
+      - người dân được gì từ chuyển đổi số
+      - lợi ích của chuyển đổi số đối với người dân là gì
+      - chính phủ số đem lại lợi ích gì cho người dân
+      - người dân được lợi gì từ chính phủ số
+      - lợi ích của chính phủ số là gì
+      - kinh tế số đem lại lợi ích gì cho người dân
+      - người dân được lợi gì từ kinh tế số
+      - xã hội số đem lại lợi ích gì cho người dân
+      - người dân được lợi gì từ xã hội số
+      - chuyển đổi số đã thay đổi mọi thứ như thế nào
+      - cuộc sống thay đổi ra sao vì chuyển đổi số
+      - chuyển đổi số ảnh hưởng đời sống thế nào
+      - lối sống đã thay đổi như thế nào
+      - cuộc sống hàng ngày thay đổi ra sao
+      - giao tiếp xã hội đã thay đổi như thế nào
+      - giao tiếp thay đổi ra sao trong môi trường số
+      - y tế đã thay đổi như thế nào
+      - chuyển đổi số trong y tế như thế nào
+      - y tế số thay đổi ra sao
+      - giáo dục đã thay đổi như thế nào
+      - chuyển đổi số trong giáo dục như thế nào
+      - giáo dục số thay đổi ra sao
+      - việc làm đã thay đổi như thế nào
+      - công việc thay đổi ra sao trong thời đại số
+      - chuyển đổi số ảnh hưởng việc làm thế nào
+      - chuyển đổi số có gây ra thất nghiệp không
+      - tự động hóa có làm mất việc không
+      - chuyển đổi số có khiến người lao động thất nghiệp không
+      - làm sao để an toàn trong môi trường số
+      - cách an toàn trên môi trường số
+      - bảo vệ bản thân trên không gian số như thế nào
+      - điện thoại thông minh đã trở thành gián điệp như thế nào
+      - điện thoại thông minh có theo dõi người dùng không
+      - smartphone có gián điệp không
+      - hacker xâm nhập vào điện thoại thông minh bằng cách nào
+      - điện thoại bị hack bằng cách nào
+      - hacker vào smartphone như thế nào
+      - dấu hiệu nào cho thấy điện thoại thông minh đã bị hack
+      - làm sao biết điện thoại bị hack
+      - nhận biết smartphone bị hack như thế nào
+      - vì sao an toàn mạng đơn giản như rửa tay bằng xà phòng
+      - cyber hygiene là gì
+      - vệ sinh an toàn mạng nghĩa là gì
+      - nếu gặp sự cố thì hỏi ai
+      - bị sự cố an toàn thông tin thì liên hệ ai
+      - khi gặp rủi ro số thì hỏi ai
+      - mỗi người dân cần chuẩn bị cho mình những gì
+      - người dân cần chuẩn bị gì cho chuyển đổi số
+      - cần chuẩn bị gì để sống trong môi trường số
+      - chuyển đổi số doanh nghiệp là gì
+      - doanh nghiệp chuyển đổi số là gì
+      - khái niệm chuyển đổi số doanh nghiệp
+      - sáng tạo phá hủy là gì
+      - khái niệm sáng tạo phá hủy
+      - creative destruction là gì
+      - triển khai erp đã phải là chuyển đổi số chưa
+      - làm erp có phải chuyển đổi số không
+      - erp và chuyển đổi số có giống nhau không
+      - doanh nghiệp nhỏ và vừa chuyển đổi số theo hướng nào
+      - sme nên chuyển đổi số thế nào
+      - hướng chuyển đổi số cho doanh nghiệp nhỏ và vừa là gì
+      - kinh tế số là gì
+      - digital economy là gì
+      - khái niệm kinh tế số
+      - tư duy kinh doanh đã thay đổi như thế nào
+      - kinh doanh thời đại số thay đổi ra sao
+      - tư duy kinh doanh trong chuyển đổi số là gì
+      - ranh giới kinh doanh đã bị xóa mờ như thế nào
+      - ranh giới ngành nghề thay đổi ra sao
+      - biên giới kinh doanh bị xóa mờ là gì
+      - kinh doanh xoay quanh khách hàng nghĩa là như thế nào
+      - lấy khách hàng làm trung tâm là gì
+      - customer centric là gì
+      - tại sao giá rẻ không còn là lợi thế cạnh tranh
+      - vì sao cạnh tranh bằng giá rẻ không còn hiệu quả
+      - mô hình kinh doanh là gì và tại sao phải thay đổi
+      - vì sao cần thay đổi mô hình kinh doanh
+      - business model thay đổi như thế nào trong chuyển đổi số
+      - kênh phân phối đã thay đổi như thế nào
+      - phân phối trong thời đại số thay đổi ra sao
+      - kênh bán hàng thay đổi như thế nào
+      - sử dụng kênh trực tuyến bổ sung sản phẩm khác biệt như thế nào
+      - kênh online giúp khác biệt hóa sản phẩm ra sao
+      - sử dụng kênh trực tuyến bổ sung khách hàng mới như thế nào
+      - kênh online giúp có thêm khách hàng mới ra sao
+      - sử dụng kênh trực tuyến bổ sung cách mua hàng mới như thế nào
+      - kênh trực tuyến tạo cách mua hàng mới ra sao
+      - hài hòa các kênh phân phối như thế nào
+      - phối hợp online và offline ra sao
+      - omni channel là gì
+      - khách hàng đã thay đổi như thế nào
+      - hành vi khách hàng thay đổi ra sao
+      - khách hàng thời đại số khác gì
+      - làm thế nào để giành được khách hàng
+      - cách thu hút khách hàng trong thời đại số
+      - làm sao để có khách hàng
+      - làm sao để tiếp thị mang lại giá trị
+      - tiếp thị giá trị là gì
+      - marketing tạo giá trị như thế nào
+      - quản trị nội bộ đã thay đổi như thế nào
+      - quản trị doanh nghiệp thời đại số thay đổi ra sao
+      - vận hành nội bộ thay đổi thế nào
+      - vạch ra tầm nhìn mới và lựa chọn hướng đi cho tương lai như thế nào
+      - xây dựng tầm nhìn mới trong chuyển đổi số ra sao
+      - vượt qua các chấn động của sự chuyển đổi như thế nào
+      - làm sao vượt qua cú sốc khi chuyển đổi số
+      - giai đoạn chuyển đổi sẽ kéo dài bao lâu
+      - chuyển đổi số mất bao lâu
+      - thời gian chuyển đổi số là bao lâu
+      - tổ chức bộ máy như thế nào
+      - tổ chức nhân sự cho chuyển đổi số ra sao
+      - cơ cấu tổ chức chuyển đổi số như thế nào
+      - tư duy lại về dữ liệu như thế nào
+      - doanh nghiệp cần tư duy dữ liệu ra sao
+      - data mindset là gì
+      - chuyển đổi số cơ quan nhà nước là gì
+      - cơ quan nhà nước chuyển đổi số là gì
+      - chuyển đổi số khu vực công là gì
+      - chính phủ điện tử là gì
+      - e government là gì
+      - khái niệm chính phủ điện tử
+      - chính phủ số là gì
+      - digital government là gì
+      - khái niệm chính phủ số
+      - điểm khác nhau giữa chính phủ điện tử và chính phủ số là gì
+      - phân biệt chính phủ điện tử và chính phủ số
+      - chính phủ số khác chính phủ điện tử thế nào
+      - chính quyền số là gì
+      - khái niệm chính quyền số
+      - digital administration là gì
+      - mối quan hệ giữa đô thị thông minh và chính quyền số
+      - đô thị thông minh liên quan gì đến chính quyền số
+      - tại sao phải phát triển chính phủ số
+      - vì sao cần chính phủ số
+      - lý do phát triển chính phủ số là gì
+      - tại sao cần phân biệt khái niệm chính phủ điện tử và chính phủ số
+      - vì sao phải tách chính phủ điện tử với chính phủ số
+      - quốc gia nào thành công trong phát triển chính phủ số
+      - nước nào làm chính phủ số tốt
+      - ví dụ quốc gia thành công về chính phủ số
+      - thách thức lớn nhất trong phát triển chính phủ số là gì
+      - khó khăn lớn nhất khi phát triển chính phủ số là gì
+      - rủi ro gặp phải khi phát triển chính phủ số là gì
+      - nguy cơ khi xây dựng chính phủ số là gì
+      - chính phủ số phục vụ những ai
+      - ai là đối tượng phục vụ của chính phủ số
+      - chuyển đổi số trong hoạt động của cơ quan nhà nước như thế nào
+      - cơ quan nhà nước nên chuyển đổi số ra sao
+      - cách làm chuyển đổi số trong cơ quan nhà nước
+      - kiến trúc là gì khung kiến trúc là gì
+      - khung kiến trúc chính phủ số là gì
+      - kiến trúc chuyển đổi số là gì
+      - triển khai hạ tầng như thế nào
+      - xây dựng hạ tầng số cho cơ quan nhà nước ra sao
+      - sử dụng các nền tảng như thế nào
+      - dùng nền tảng số trong cơ quan nhà nước ra sao
+      - chia sẻ dữ liệu như thế nào
+      - cơ quan nhà nước chia sẻ dữ liệu ra sao
+      - dữ liệu dùng chung như thế nào
+      - cung cấp dịch vụ như thế nào
+      - dịch vụ công số cần cung cấp ra sao
+      - cung cấp dịch vụ công trực tuyến như thế nào
+      - thiết lập tổ chức bộ máy phát triển chính phủ số như thế nào
+      - tổ chức bộ máy cho chính phủ số ra sao
+      - làm thế nào để quản lý rủi ro khi phát triển chính phủ số
+      - quản trị rủi ro trong chính phủ số như thế nào
+      - tại sao phải làm nhanh
+      - vì sao cơ quan nhà nước phải chuyển đổi số nhanh
+      - giải pháp đột phá là gì
+      - đâu là giải pháp đột phá trong chuyển đổi số cơ quan nhà nước
+      - chuyển đổi số trong từng ngành lĩnh vực như thế nào
+      - các ngành chuyển đổi số ra sao
+      - chuyển đổi số theo lĩnh vực như thế nào
+      - chuyển đổi số trong lĩnh vực y tế như thế nào
+      - y tế chuyển đổi số ra sao
+      - chuyển đổi số ngành y tế
+      - chuyển đổi số trong lĩnh vực giáo dục như thế nào
+      - giáo dục chuyển đổi số ra sao
+      - chuyển đổi số ngành giáo dục
+      - chuyển đổi số trong lĩnh vực tài chính ngân hàng như thế nào
+      - ngân hàng chuyển đổi số ra sao
+      - chuyển đổi số ngành tài chính ngân hàng
+      - chuyển đổi số trong lĩnh vực nông nghiệp như thế nào
+      - nông nghiệp chuyển đổi số ra sao
+      - chuyển đổi số ngành nông nghiệp
+      - chuyển đổi số trong lĩnh vực giao thông vận tải và kho vận như thế nào
+      - logistics chuyển đổi số ra sao
+      - giao thông vận tải chuyển đổi số thế nào
+      - chuyển đổi số trong lĩnh vực năng lượng như thế nào
+      - năng lượng chuyển đổi số ra sao
+      - chuyển đổi số ngành năng lượng
+      - chuyển đổi số trong lĩnh vực tài nguyên và môi trường như thế nào
+      - tài nguyên môi trường chuyển đổi số ra sao
+      - chuyển đổi số trong lĩnh vực sản xuất công nghiệp như thế nào
+      - công nghiệp chuyển đổi số ra sao
+      - sản xuất công nghiệp số là gì
+      - đào tạo kỹ năng số như thế nào
+      - làm sao đào tạo kỹ năng số
+      - kỹ năng số cần đào tạo như thế nào
+      - tại sao cần đào tạo kỹ năng số
+      - vì sao phải học kỹ năng số
+      - lý do cần đào tạo kỹ năng số
+      - tìm kiếm nhân lực phát triển chính phủ số ở đâu
+      - tìm nhân lực chuyển đổi số ở đâu
+      - nguồn nhân lực chính phủ số ở đâu
+      - trợ lý ảo phục vụ công chức là gì
+      - trợ lý ảo cho cán bộ công chức là gì
+      - virtual assistant cho công chức là gì
+      - nền tảng làm việc cộng tác trên môi trường số thế hệ mới là gì
+      - nền tảng cộng tác số là gì
+      - môi trường làm việc số thế hệ mới là gì
+      - sau chính phủ số là gì
+      - bước tiếp theo sau chính phủ số là gì
+      - tương lai sau chính phủ số là gì
+      - doanh nghiệp nên bắt đầu từ đâu
+      - gợi ý cho doanh nghiệp khi bắt đầu chuyển đổi số
+      - bước đầu cho doanh nghiệp chuyển đổi số là gì
+      - cá nhân nên bắt đầu từ đâu để tham gia chuyển đổi số
+      - người dân nên làm gì đầu tiên trong chuyển đổi số
+      - nên bắt đầu thế nào với cá nhân
+      - cơ quan nhà nước nên bắt đầu từ đâu
+      - gợi ý khởi động chuyển đổi số cho cơ quan nhà nước
+      - khu vực công nên bắt đầu chuyển đổi số thế nào

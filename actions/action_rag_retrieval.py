@@ -8,7 +8,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from sentence_transformers import SentenceTransformer, CrossEncoder
 
 # ==================== Configuration ====================
-GEN_API_KEY = "AIzaSyBsaCNp1FcDKOvC4qZXJdzF02u-JEQ__0c"
+GEN_API_KEY = ""
 LLM_MODEL = "models/gemini-2.5-flash"
 CHROMA_COLLECTION_NAME = "digital_transformation_handbook"
 EMBEDDING_MODEL = "BAAI/bge-m3"

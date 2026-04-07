@@ -38,6 +38,19 @@ def send_to_rasa(message: str) -> str:
     except Exception as e:
         return f"❌ Lỗi: {e}"
 
+# Sử dụng cache để tránh gửi nhiều yêu cầu giống nhau trong cùng một session
+@st.cache_data(show_spinner=False)
+def cached_query(session_id: str, message: str):
+    payload = {"sender": session_id, "message": message}
+    response = requests.post(RASA_WEBHOOK, json=payload, timeout=60)
+    
+    if response.status_code == 200:
+        data = response.json()
+        if data:
+            return "\n\n".join(msg.get("text", "") for msg in data if msg.get("text"))
+        return "_(Bot không có phản hồi)_"
+    
+    return f"❌ Lỗi kết nối Rasa (HTTP {response.status_code})"
 
 # ==================== UI ====================
 st.title("🤖 Chatbot Chuyển Đổi Số")
@@ -68,8 +81,11 @@ if user_input := st.chat_input("Nhập câu hỏi về chuyển đổi số...")
 
     # Gửi tới Rasa và hiển thị phản hồi
     with st.chat_message("assistant"):
-        with st.spinner("Đang tìm kiếm tài liệu..."):
-            bot_reply = send_to_rasa(user_input)
+        with st.spinner("⏳ Đang trả lời..."):
+            bot_reply = cached_query(
+                st.session_state.session_id,
+                user_input
+            )
         st.markdown(bot_reply)
 
     st.session_state.messages.append({"role": "assistant", "content": bot_reply})

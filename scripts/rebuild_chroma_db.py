@@ -1,20 +1,46 @@
 from __future__ import annotations
 
+import os
 import shutil
 import sqlite3
 from pathlib import Path
 from typing import Dict, List
 
+os.environ.setdefault("ANONYMIZED_TELEMETRY", "FALSE")
+os.environ.setdefault("HF_HUB_OFFLINE", "1")
+os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
+
 import chromadb
+import posthog
+from chromadb.config import Settings
+from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
 
-CHROMA_DB_DIR = Path("chroma_db")
-LEGACY_DB_PATH = CHROMA_DB_DIR / "chroma.sqlite3"
-COLLECTION_NAME = "digital_transformation_handbook"
-EMBEDDING_MODEL = "BAAI/bge-m3"
-BATCH_SIZE = 32
+posthog.disabled = True
+posthog.capture = lambda *args, **kwargs: None
+
+load_dotenv()
+
+# ==================== CONFIG ====================
+BASE_DIR = Path(__file__).resolve().parent.parent
+CHROMA_DB_DIR = Path(
+    os.getenv("CHROMA_DB_PATH", str(BASE_DIR / "chroma_db_rebuilt"))
+).resolve()
+LEGACY_DB_PATH = Path(
+    os.getenv(
+        "CHROMA_LEGACY_DB_PATH",
+        str(BASE_DIR / "chroma_db" / "chroma.sqlite3"),
+    )
+).resolve()
+COLLECTION_NAME = os.getenv(
+    "CHROMA_COLLECTION_NAME", "digital_transformation_handbook"
+)
+
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "BAAI/bge-m3")
+BATCH_SIZE = int(os.getenv("CHROMA_REBUILD_BATCH_SIZE", "32"))
 
 
+# ==================== LOAD OLD DATA ====================
 def load_legacy_rows(db_path: Path) -> List[Dict]:
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
@@ -33,6 +59,7 @@ def load_legacy_rows(db_path: Path) -> List[Dict]:
         ORDER BY e.id
         """
     ).fetchall()
+
     conn.close()
 
     documents = []
@@ -48,7 +75,7 @@ def load_legacy_rows(db_path: Path) -> List[Dict]:
 
         documents.append(
             {
-                "id": embedding_id,
+                "id": str(embedding_id),
                 "document": document,
                 "metadata": metadata,
             }
@@ -57,20 +84,48 @@ def load_legacy_rows(db_path: Path) -> List[Dict]:
     return documents
 
 
+# ==================== EMBEDDING ====================
+def embed_documents(model, docs: List[str]):
+    texts = [
+        "Represent this sentence for retrieval: " + doc
+        for doc in docs
+    ]
+
+    embeddings = model.encode(
+        texts,
+        normalize_embeddings=True,
+        show_progress_bar=False,
+    )
+
+    return embeddings.tolist()
+
+
+# ==================== REBUILD ====================
 def rebuild_collection(rows: List[Dict]) -> None:
+    # Only clear the chosen output directory so we do not accidentally wipe another DB.
     if CHROMA_DB_DIR.exists():
         shutil.rmtree(CHROMA_DB_DIR)
 
-    client = chromadb.PersistentClient(path=str(CHROMA_DB_DIR))
+    print(f"Creating new ChromaDB at: {CHROMA_DB_DIR}")
+
+    client = chromadb.PersistentClient(
+        path=str(CHROMA_DB_DIR),
+        settings=Settings(anonymized_telemetry=False),
+    )
     collection = client.get_or_create_collection(COLLECTION_NAME)
+
     model = SentenceTransformer(EMBEDDING_MODEL)
 
-    for start in range(0, len(rows), BATCH_SIZE):
+    total = len(rows)
+
+    for start in range(0, total, BATCH_SIZE):
         batch = rows[start : start + BATCH_SIZE]
+
         documents = [item["document"] for item in batch]
         ids = [item["id"] for item in batch]
         metadatas = [item["metadata"] for item in batch]
-        embeddings = model.encode(documents, show_progress_bar=False).tolist()
+
+        embeddings = embed_documents(model, documents)
 
         collection.add(
             ids=ids,
@@ -78,20 +133,25 @@ def rebuild_collection(rows: List[Dict]) -> None:
             metadatas=metadatas,
             embeddings=embeddings,
         )
-        print(f"Indexed {start + len(batch)}/{len(rows)} documents")
 
-    print(f"Done. Collection '{COLLECTION_NAME}' now has {collection.count()} documents.")
+        print(f"Indexed {start + len(batch)}/{total}")
+
+    print(f"\nDONE! Total documents: {collection.count()}")
 
 
-def main() -> None:
+# ==================== MAIN ====================
+def main():
     if not LEGACY_DB_PATH.exists():
-        raise FileNotFoundError(f"Legacy database not found: {LEGACY_DB_PATH}")
+        raise FileNotFoundError(f"Legacy DB not found: {LEGACY_DB_PATH}")
 
+    print(f"Loading legacy data from: {LEGACY_DB_PATH}")
     rows = load_legacy_rows(LEGACY_DB_PATH)
-    if not rows:
-        raise RuntimeError("No legacy documents found to rebuild.")
 
-    print(f"Recovered {len(rows)} non-empty documents from legacy SQLite.")
+    if not rows:
+        raise RuntimeError("No documents found!")
+
+    print(f"Loaded {len(rows)} documents")
+
     rebuild_collection(rows)
 
 

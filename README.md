@@ -18,7 +18,7 @@ Mo terminal tai thu muc goc project (`rasa_prj`) va chay:
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-pip install rasa rasa-sdk google-generativeai sentence-transformers chromadb
+pip install -r requirements.txt
 ```
 
 Neu ban gap loi version voi Rasa, hay dung Python 3.10 va cai dat lai trong moi truong ao moi.
@@ -29,7 +29,7 @@ Neu ban gap loi version voi Rasa, hay dung Python 3.10 va cai dat lai trong moi 
 rasa train
 ```
 
-## 4) Chay bot (can 2 terminal)
+## 4) Chay bot (can 3 terminal)
 
 ### Terminal 1: chay Action Server
 
@@ -40,11 +40,17 @@ rasa run actions
 
 Action server se lang nghe tai cong 5055 theo cau hinh trong `endpoints.yml`.
 
-### Terminal 2: chay Rasa chatbot
+### Terminal 2: Kết nối Rasa qua REST API
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
-rasa shell
+rasa run --enable-api
+```
+### Terminal 3: Chạy UI với Streamlit
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+Streamlit streamlit_app.py
 ```
 
 Sau do ban co the chat truc tiep trong terminal.

@@ -3,7 +3,7 @@ import requests
 import uuid
 
 # ==================== Config ====================
-RASA_WEBHOOK = "http://localhost:5005/webhooks/rest/webhook"
+RASA_WEBHOOK = "https://rasa-service.onrender.com/webhooks/rest/webhook"
 
 # ==================== Page Setup ====================
 st.set_page_config(

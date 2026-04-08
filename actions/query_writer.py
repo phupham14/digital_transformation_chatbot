@@ -16,6 +16,7 @@ class QueryRewriter:
             "cybersecurity": "an toàn thông tin",
             "machine learning": "học máy",
             "deep learning": "học sâu",
+            "blockchain": "chuỗi khối",
         }
         self.definition_markers = (
             "là gì",

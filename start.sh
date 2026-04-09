@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e  # fail ngay nếu có lỗi
+
 echo "Starting Rasa Action Server..."
 rasa run actions --port 5055 &
 
@@ -8,4 +10,4 @@ rasa run \
   --enable-api \
   --cors "*" \
   --port $PORT \
-  --model models/20260328-133345-daring-resource.tar.gz
+  --model models

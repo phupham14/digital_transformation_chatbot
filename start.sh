@@ -9,5 +9,5 @@ rasa run \
   --enable-api \
   --cors "*" \
   --port ${PORT:-10000} \
-  --model models
+  --model models \
   --debug

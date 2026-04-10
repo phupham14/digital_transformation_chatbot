@@ -10,3 +10,4 @@ rasa run \
   --cors "*" \
   --port ${PORT:-10000} \
   --model models
+  --debug
